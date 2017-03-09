@@ -240,6 +240,7 @@ void s_init(void)
 	/* Enable RTC32K clock */
 	rtc32k_enable();
 #endif
+	puts(" iysheng say begin sram init\n");
 	sdram_init();
 }
 #endif

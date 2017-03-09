@@ -56,12 +56,13 @@ static int read_eeprom(struct am43xx_board_id *header)
 			       CONFIG_SYS_I2C_EEPROM_ADDR);
 			return -EIO;
 		}
-
+	/*
 		if (header->magic != 0xEE3355AA) {
 			printf("Incorrect magic number (0x%x) in EEPROM\n",
 			       header->magic);
 			return -EINVAL;
 		}
+	*/
 	}
 
 	strncpy(am43xx_board_name, (char *)header->name, sizeof(header->name));
@@ -261,10 +262,10 @@ const struct dpll_params *get_dpll_ddr_params(void)
 	if (read_eeprom(&header) < 0)
 		puts("Could not get board ID.\n");
 
-	if (board_is_eposevm())
+	//if (board_is_eposevm())
 		return &epos_evm_dpll_ddr;
-	else if (board_is_gpevm())
-		return &gp_evm_dpll_ddr;
+	//else if (board_is_gpevm())
+	//	return &gp_evm_dpll_ddr;
 
 	puts(" Board not supported\n");
 	return NULL;
@@ -367,13 +368,13 @@ void sdram_init(void)
 	 * GP EMV has 1GB DDR3 connected to EMIF
 	 * along with VTT regulator.
 	 */
-	if (board_is_eposevm()) {
-		config_ddr(0, &ioregs_lpddr2, NULL, NULL, &emif_regs_lpddr2, 0);
-	} else if (board_is_gpevm()) {
+	//if (board_is_eposevm()) {
+	//	config_ddr(0, &ioregs_lpddr2, NULL, NULL, &emif_regs_lpddr2, 0);
+	//} else if (board_is_gpevm()) {
 		enable_vtt_regulator();
 		config_ddr(0, &ioregs_ddr3, NULL, NULL,
 			   &ddr3_emif_regs_400Mhz, 0);
-	}
+	//}
 }
 #endif
 

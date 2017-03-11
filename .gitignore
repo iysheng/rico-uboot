@@ -48,8 +48,8 @@
 /reloc_off
 
 !/spl/Makefile
-/spl/*
-/tpl/
+!/spl/*
+!/tpl/
 
 #
 # Generated include files

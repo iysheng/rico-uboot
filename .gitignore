@@ -47,9 +47,9 @@
 /errlog
 /reloc_off
 
-!/spl/Makefile
-/spl/*
-/tpl/
+#!/spl/Makefile
+#!/spl/*
+#!/tpl/
 
 #
 # Generated include files

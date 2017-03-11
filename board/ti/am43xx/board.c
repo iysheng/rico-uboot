@@ -214,7 +214,13 @@ const struct emif_regs ddr3_emif_regs_400Mhz = {
 	.emif_rd_wr_lvl_rmp_win		= 0x0,
 	.emif_rd_wr_lvl_rmp_ctl		= 0x0,
 	.emif_rd_wr_lvl_ctl		= 0x0,
-	.emif_rd_wr_exec_thresh		= 0x00000405
+	.emif_rd_wr_exec_thresh		= 0x00000405,
+	/*add by <iysheng@163.com>*/
+	.emif_prio_class_serv_map	= 0x80000001,
+	.emif_connect_id_serv_1_map	= 0x80000094,
+	.emif_connect_id_serv_2_map	= 0x00000000,
+	.emif_cos_config		= 0x000FFFFF
+
 };
 
 const u32 ext_phy_ctrl_const_base_ddr3[] = {
@@ -374,6 +380,8 @@ void sdram_init(void)
 		enable_vtt_regulator();
 		config_ddr(0, &ioregs_ddr3, NULL, NULL,
 			   &ddr3_emif_regs_400Mhz, 0);
+//		config_ddr(0, &ioregs_ddr3, NULL, NULL,
+//			   &ddr3_emif_regs_400Mhz, 0);
 	//}
 }
 #endif

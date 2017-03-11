@@ -242,6 +242,7 @@ void s_init(void)
 #endif
 	puts(" iysheng say begin sram init\n");
 	sdram_init();
+	puts(" iysheng say finished sram init\n");
 }
 #endif
 

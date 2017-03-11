@@ -194,6 +194,14 @@ void config_ddr_phy(const struct emif_regs *regs, int nr)
 	setbits_le32(&emif_reg[nr]->emif_sdram_ref_ctrl,
 		     EMIF_REG_INITREF_DIS_MASK);
 
+/*add  by <iysheng@163.com>*/
+	if(regs->emif_cos_config) {
+		writel(regs->emif_prio_class_serv_map, &emif_reg[nr]->emif_prio_class_serv_map);
+		writel(regs->emif_connect_id_serv_1_map, &emif_reg[nr]->emif_connect_id_serv_1_map);
+		writel(regs->emif_connect_id_serv_2_map, &emif_reg[nr]->emif_connect_id_serv_2_map);
+		writel(regs->emif_cos_config, &emif_reg[nr]->emif_cos_config);
+	}
+
 	writel(regs->emif_ddr_phy_ctlr_1,
 		&emif_reg[nr]->emif_ddr_phy_ctrl_1);
 	writel(regs->emif_ddr_phy_ctlr_1,

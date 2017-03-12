@@ -32,20 +32,20 @@ ENTRY(lowlevel_init)
 	 * Save the old lr(passed in ip) and the current lr to stack
 	 */
 	push	{ip, lr}
-
 	/*
 	 * go setup pll, mux, memory
 	 */
+	
 	bl	s_init
 	
-
 	pop	{ip, pc}
-iysheng:
+/*
+iyshengbak:
 	ldr r1, =0x48322134	/*add by <iysheng@163.com> for led test*/
-	ldr r2, =0xfffffff7	
+/*	ldr r2, =0xfffffff7	
 	str r2, [r1]
 	ldr r1, =0x4832213c
 	ldr r2, =0x00000008
 	str r2, [r1]	
-	
+*/	
 ENDPROC(lowlevel_init)

@@ -110,7 +110,7 @@ if [ -n "$KBUILD_SRC" ] ; then
 	mkdir -p asm
 else
 	cd arch/${arch}/include
-	echo "iysheng say i don't want to see ${BUILD_SRC} ${LNPREFIX} ${soc}"
+	#echo "iysheng say i don't want to see ${BUILD_SRC} ${LNPREFIX} ${soc}"
 fi
 
 rm -f asm/arch

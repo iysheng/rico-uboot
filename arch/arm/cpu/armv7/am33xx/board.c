@@ -210,6 +210,7 @@ void s_init(void)
 	 * first 4KiB NOR to be read, we must finish doing what we know of
 	 * the NOR mux in this space in order to continue.
 	 */
+	//puts("iysheng say s_init().\n");
 #ifdef CONFIG_NOR_BOOT
 	enable_norboot_pin_mux();
 #endif
@@ -230,9 +231,11 @@ void s_init(void)
 	gd->baudrate = CONFIG_BAUDRATE;
 	serial_init();
 	gd->have_console = 1;
+	puts("iysheng say nor boot.\n");
 #elif defined(CONFIG_SPL_BUILD)
 	gd = &gdata;
 	preloader_console_init();
+	puts("iysheng say spl build.\n");
 #endif
 	prcm_init();
 	set_mux_conf_regs();

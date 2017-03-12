@@ -272,6 +272,7 @@ void board_init_f(ulong bootflag)
 	void *new_fdt = NULL;
 	size_t fdt_size = 0;
 
+	puts("iysheng say begin foreach\n");
 	memset((void *)gd, 0, sizeof(gd_t));
 
 	gd->mon_len = (ulong)&__bss_end - (ulong)_start;
@@ -286,7 +287,6 @@ void board_init_f(ulong bootflag)
 	gd->fdt_blob = (void *)getenv_ulong("fdtcontroladdr", 16,
 						(uintptr_t)gd->fdt_blob);
 
-	puts("iysheng say begin foreach\n");
 	for (init_fnc_ptr = init_sequence; *init_fnc_ptr; ++init_fnc_ptr) {
 		if ((*init_fnc_ptr)() != 0) {
 			hang ();

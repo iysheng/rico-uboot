@@ -93,14 +93,14 @@ void enable_board_pin_mux(void)
 	configure_module_pin_mux(mmc0_pin_mux);
 	configure_module_pin_mux(i2c0_pin_mux);
 	configure_module_pin_mux(mdio_pin_mux);
-
-	if (board_is_gpevm()) {
+	puts("config gpio mux\n");
+	//if (board_is_gpevm()) {
 		configure_module_pin_mux(gpio5_7_pin_mux);
 		configure_module_pin_mux(rgmii1_pin_mux);
-	} else if (board_is_eposevm()) {
+/*	} else if (board_is_eposevm()) {
 		configure_module_pin_mux(rmii1_pin_mux);
 		configure_module_pin_mux(qspi_pin_mux);
-	}
+	}*/
 }
 
 void enable_i2c0_pin_mux(void)

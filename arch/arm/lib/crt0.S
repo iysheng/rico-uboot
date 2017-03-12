@@ -61,6 +61,7 @@ ENTRY(_main)
  * Set up initial C runtime environment and call board_init_f(0).
  */
 
+
 #if defined(CONFIG_SPL_BUILD) && defined(CONFIG_SPL_STACK)
 	ldr	sp, =(CONFIG_SPL_STACK)
 #else
@@ -72,16 +73,16 @@ ENTRY(_main)
 	mov	r9, sp		/* GD is above SP */
 	mov	r0, #0
 
-/*	
 iysheng:
 	ldr r1, =0x48322134	/*add by <iysheng@163.com> for led test*/
-/*	ldr r2, =0xfffffff7	
+	ldr r2, =0xfffffff7	
 	str r2, [r1]
 	ldr r1, =0x4832213c
 	ldr r2, =0x00000008
 	str r2, [r1]	
-*/
-	bl	board_init_f
+	/*b iysheng*/
+	
+bl	board_init_f
 
 #if ! defined(CONFIG_SPL_BUILD)
 

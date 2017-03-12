@@ -248,13 +248,14 @@ const u32 ext_phy_ctrl_const_base_ddr3[] = {
 
 void emif_get_ext_phy_ctrl_const_regs(const u32 **regs, u32 *size)
 {
+	/*
 	if (board_is_eposevm()) {
 		*regs = ext_phy_ctrl_const_base_lpddr2;
 		*size = ARRAY_SIZE(ext_phy_ctrl_const_base_lpddr2);
-	} else if (board_is_gpevm()) {
+	} else if (board_is_gpevm()) {*/
 		*regs = ext_phy_ctrl_const_base_ddr3;
 		*size = ARRAY_SIZE(ext_phy_ctrl_const_base_ddr3);
-	}
+//	}
 
 	return;
 }

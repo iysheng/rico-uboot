@@ -44,7 +44,7 @@ int gpio_is_valid(int gpio)
 static int check_gpio(int gpio)
 {
 	if (!gpio_is_valid(gpio)) {
-		printf("ERROR : check_gpio: invalid GPIO %d\n", gpio);
+		printf("ERROR : check_gpio max:%d invalid GPIO %d\n",OMAP_MAX_GPIO, gpio);
 		return -1;
 	}
 	return 0;

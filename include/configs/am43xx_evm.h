@@ -11,6 +11,10 @@
 
 #define CONFIG_AM43XX
 
+/*add led support*/
+#define CONFIG_STATUS_LED
+#define CONFIG_BOARD_SPECIFIC_LED
+
 #define CONFIG_BOARD_LATE_INIT
 #define CONFIG_ARCH_CPU_INIT
 #define CONFIG_SYS_CACHELINE_SIZE       32

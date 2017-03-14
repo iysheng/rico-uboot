@@ -106,7 +106,7 @@
  */
 #define CONFIG_SYS_MALLOC_LEN		(1024 << 10)
 #define CONFIG_SYS_HUSH_PARSER
-#define CONFIG_SYS_PROMPT		"U-Boot# "
+#define CONFIG_SYS_PROMPT		"Rico# "
 #define CONFIG_SYS_CONSOLE_INFO_QUIET
 #define CONFIG_BAUDRATE			115200
 #define CONFIG_ENV_VARS_UBOOT_CONFIG	/* Strongly encouraged */

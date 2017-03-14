@@ -24,6 +24,21 @@
 
 DECLARE_GLOBAL_DATA_PTR;
 
+#define yellow_led ((5<<5)+3)
+
+void	coloured_LED_init (void)
+{
+	/*if(gpio_request(yellow_led,"yellow")==0)*/
+	gpio_direction_output(yellow_led);	
+}
+void	yellow_led_on(void)
+{
+	gpio_set_value(yellow_led,1);
+}
+void	yellow_led_off(void)
+{
+	gpio_set_value(yellow_led,0);
+}
 static struct ctrl_dev *cdev = (struct ctrl_dev *)CTRL_DEVICE_BASE;
 
 /*

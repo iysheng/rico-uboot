@@ -321,6 +321,7 @@ void board_init_f(ulong bootflag)
 #endif
 
 	addr = CONFIG_SYS_SDRAM_BASE + get_effective_memsize();
+	printf("iysheng say memsize is %x\n",get_effective_memsize());
 
 #ifdef CONFIG_LOGBUFFER
 #ifndef CONFIG_ALT_LB_ADDR
@@ -379,6 +380,8 @@ void board_init_f(ulong bootflag)
 	/*
 	 * reserve memory for malloc() arena
 	 */
+
+	puts("iysheng say ndef CONFIG_SPL_BUILD.\n");
 	addr_sp = addr - TOTAL_MALLOC_LEN;
 	debug("Reserving %dk for malloc() at: %08lx\n",
 			TOTAL_MALLOC_LEN >> 10, addr_sp);

@@ -72,10 +72,10 @@ ENTRY(_main)
 	bic	sp, sp, #7	/* 8-byte alignment for ABI compliance */
 	mov	r9, sp		/* GD is above SP */
 	mov	r0, #0
-
+/*
 iysheng:
 	ldr r1, =0x48322134	/*add by <iysheng@163.com> for led test*/
-	ldr r2, =0xfffffff7	
+/*	ldr r2, =0xfffffff7	
 	str r2, [r1]
 	ldr r1, =0x4832213c
 	ldr r2, =0x00000008
@@ -119,7 +119,7 @@ clbss_l:cmp	r0, r1			/* while not at end of BSS */
 	blo	clbss_l
 
 	bl coloured_LED_init
-	bl red_led_on
+	bl yellow_led_on
 
 	/* call board_init_r(gd_t *id, ulong dest_addr) */
 	mov     r0, r9                  /* gd_t */

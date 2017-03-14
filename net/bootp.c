@@ -302,7 +302,7 @@ BootpHandler(uchar *pkt, unsigned dest, IPaddr_t sip, unsigned src,
 	/*
 	 *	Got a good BOOTP reply.	 Copy the data into our variables.
 	 */
-#ifdef CONFIG_STATUS_LED
+#ifdef CONFIG_STATUS_LED_BOARD
 	status_led_set(STATUS_LED_BOOT, STATUS_LED_OFF);
 #endif
 

@@ -1,4 +1,5 @@
 #!/bin/sh
+# A script to build rico uboot
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
 if [ $# -gt 0 ]
 then

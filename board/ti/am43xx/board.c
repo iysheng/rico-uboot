@@ -21,6 +21,7 @@
 #include "board.h"
 #include <miiphy.h>
 #include <cpsw.h>
+#include <asm/gpio.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -28,8 +29,8 @@ DECLARE_GLOBAL_DATA_PTR;
 
 void	coloured_LED_init (void)
 {
-	/*if(gpio_request(yellow_led,"yellow")==0)*/
-	gpio_direction_output(yellow_led);	
+	if(!gpio_request(yellow_led,"yellow"))
+	gpio_direction_output(yellow_led,0);
 }
 void	yellow_led_on(void)
 {
@@ -405,7 +406,7 @@ void sdram_init(void)
 int board_init(void)
 {
 	gd->bd->bi_boot_params = CONFIG_SYS_SDRAM_BASE + 0x100;
-
+	printf("iysheng board_init board/ti/am43xx/board.c gd->bd->bi_boot_params=0x%x\n",gd->bd->bi_boot_params);
 	return 0;
 }
 

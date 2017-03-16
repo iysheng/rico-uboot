@@ -72,15 +72,6 @@ ENTRY(_main)
 	bic	sp, sp, #7	/* 8-byte alignment for ABI compliance */
 	mov	r9, sp		/* GD is above SP */
 	mov	r0, #0
-/*
-iysheng:
-	ldr r1, =0x48322134	/*add by <iysheng@163.com> for led test*/
-/*	ldr r2, =0xfffffff7	
-	str r2, [r1]
-	ldr r1, =0x4832213c
-	ldr r2, =0x00000008
-	str r2, [r1]	
-	/*b iysheng*/
 	
 bl	board_init_f
 

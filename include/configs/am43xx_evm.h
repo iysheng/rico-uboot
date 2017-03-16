@@ -15,6 +15,10 @@
 #define CONFIG_STATUS_LED
 #define CONFIG_BOARD_SPECIFIC_LED
 
+#define CONFIG_IPADDR 192.168.1.200
+#define CONFIG_SERVERIP 192.168.1.101
+#define CONFIG_BOOTARGS "root=/dev/nfs nfsroot=192.168.1.101:/srv/nfs/rootfs ip=192.168.1.200 console=ttyO0,115200"
+
 #define CONFIG_BOARD_LATE_INIT
 #define CONFIG_ARCH_CPU_INIT
 #define CONFIG_SYS_CACHELINE_SIZE       32
@@ -118,7 +122,7 @@
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	"loadaddr=0x80200000\0" \
 	"fdtaddr=0x80F80000\0" \
-	"fdt_high=0xffffffff\0" \
+	"fdt_high=0xa0000000\0" \
 	"rdaddr=0x81000000\0" \
 	"fdtfile=undefined\0" \
 	"bootpart=0:2\0" \
@@ -201,13 +205,13 @@
 		"if test $board_name = AM43__GP; then " \
 			"setenv fdtfile am437x-gp-evm.dtb; fi; " \
 		"if test $fdtfile = undefined; then " \
-			"echo WARNING: Could not determine device tree; fi; \0"
+			"setenv fdtfile myir_ricoboard.dtb; fi; " \
+/*"echo WARNING: Could not determine device tree; fi; \0"*/
 
 #define CONFIG_BOOTCOMMAND \
-	"run findfdt; " \
-	"run mmcboot;" \
-	"run usbboot;"
-
+	"tftp 80000000 uImage; " \
+	"tftp 90000000 myir_ricoboard.dtb;" \
+	"bootm 80000000 90000000;"
 #endif
 
 /* CPSW Ethernet */

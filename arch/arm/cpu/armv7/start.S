@@ -248,13 +248,6 @@ ENTRY(cpu_init_crit)
 	 * wake up conditions.
 	 */
 	b	lowlevel_init		@ go setup pll,mux,memory
-iysheng:
-	ldr r1, =0x48322134	/*add by <iysheng@163.com> for led test*/
-	ldr r2, =0xfffffff7	
-	str r2, [r1]
-	ldr r1, =0x4832213c
-	ldr r2, =0x00000008
-	str r2, [r1]	
 ENDPROC(cpu_init_crit)
 #endif
 

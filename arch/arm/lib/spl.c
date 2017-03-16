@@ -30,7 +30,7 @@ void __weak board_init_f(ulong dummy)
 
 	/* Set global data pointer. */
 	gd = &gdata;
-
+	printf("iysheng board_init_f /arch/arm/lib/spl.c gdadd=0x%x\n",gd);
 	board_init_r(NULL, 0);
 }
 

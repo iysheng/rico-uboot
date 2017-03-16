@@ -47,6 +47,8 @@
 DECLARE_GLOBAL_DATA_PTR;
 
 ulong monitor_flash_len;
+/*added by iysheng*/
+#define CONFIG_MACH_TYPE 452
 
 #ifdef CONFIG_HAS_DATAFLASH
 extern int  AT91F_DataflashInit(void);
@@ -272,16 +274,17 @@ void board_init_f(ulong bootflag)
 	void *new_fdt = NULL;
 	size_t fdt_size = 0;
 
-	puts("iysheng say begin foreach\n");
+	puts("iysheng board_init_f /arch/arm/lib/board.c");
 	memset((void *)gd, 0, sizeof(gd_t));
-
 	gd->mon_len = (ulong)&__bss_end - (ulong)_start;
 #ifdef CONFIG_OF_EMBED
 	/* Get a pointer to the FDT */
 	gd->fdt_blob = __dtb_db_begin;
+	puts("iysheng board_init_f /arch/arm/lib/board.c EMBED gd->fdt_blob=0x%x\n",gd->fdt_blob);
 #elif defined CONFIG_OF_SEPARATE
 	/* FDT is at end of image */
 	gd->fdt_blob = &_end;
+	puts("iysheng board_init_f /arch/arm/lib/board.c SEPARATE gd->fdt_blob=0x%x\n",gd->fdt_blob);
 #endif
 	/* Allow the early environment to override the fdt address */
 	gd->fdt_blob = (void *)getenv_ulong("fdtcontroladdr", 16,
@@ -380,7 +383,6 @@ void board_init_f(ulong bootflag)
 	/*
 	 * reserve memory for malloc() arena
 	 */
-
 	puts("iysheng say ndef CONFIG_SPL_BUILD.\n");
 	addr_sp = addr - TOTAL_MALLOC_LEN;
 	debug("Reserving %dk for malloc() at: %08lx\n",
@@ -398,7 +400,7 @@ void board_init_f(ulong bootflag)
 #ifdef CONFIG_MACH_TYPE
 	gd->bd->bi_arch_number = CONFIG_MACH_TYPE; /* board id for Linux */
 #endif
-
+	printf("iysheng machid %d\n",gd->bd->bi_arch_number);
 	addr_sp -= sizeof (gd_t);
 	id = (gd_t *) addr_sp;
 	debug("Reserving %zu Bytes for Global Data at: %08lx\n",
@@ -517,15 +519,14 @@ void board_init_r(gd_t *id, ulong dest_addr)
 #if !defined(CONFIG_SYS_NO_FLASH)
 	ulong flash_size;
 #endif
-
+	printf("iysheng board_init_r /arch/arm/lib/board.c gdadd=0x%x\n",gd);
 	gd->flags |= GD_FLG_RELOC;	/* tell others: relocation done */
 	bootstage_mark_name(BOOTSTAGE_ID_START_UBOOT_R, "board_init_r");
-
+	puts("iysheng board_init_r /arch/arm/lib/board.c");
 	monitor_flash_len = (ulong)&__rel_dyn_end - (ulong)_start;
 
 	/* Enable caches */
 	enable_caches();
-
 	debug("monitor flash len: %08lX\n", monitor_flash_len);
 	board_init();	/* Setup chipselects */
 	/*

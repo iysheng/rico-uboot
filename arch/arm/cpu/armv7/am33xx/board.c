@@ -210,7 +210,6 @@ void s_init(void)
 	 * first 4KiB NOR to be read, we must finish doing what we know of
 	 * the NOR mux in this space in order to continue.
 	 */
-	//puts("iysheng say s_init().\n");
 #ifdef CONFIG_NOR_BOOT
 	enable_norboot_pin_mux();
 #endif
@@ -243,9 +242,7 @@ void s_init(void)
 	/* Enable RTC32K clock */
 	rtc32k_enable();
 #endif
-	puts(" iysheng say begin sram init\n");
 	sdram_init();
-	puts(" iysheng say finished sram init\n");
 }
 #endif
 

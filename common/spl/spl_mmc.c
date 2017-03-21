@@ -23,7 +23,9 @@ static int mmc_load_image_raw(struct mmc *mmc, unsigned long sector)
 
 	header = (struct image_header *)(CONFIG_SYS_TEXT_BASE -
 						sizeof(struct image_header));
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng mmc_load_imgae_raw() /common/spl/spl_mmc.c\n");
+	#endif
 	/* read image header to find the image size & load address */
 	err = mmc->block_dev.block_read(0, sector, 1, header);
 	if (err == 0)
@@ -54,7 +56,9 @@ end:
 #ifdef CONFIG_SPL_OS_BOOT
 static int mmc_load_image_raw_os(struct mmc *mmc)
 {
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng mmc_load_image_raw_os() /commom/spl/spl_mmc.c\n");
+	#endif
 	if (!mmc->block_dev.block_read(0,
 				       CONFIG_SYS_MMCSD_RAW_MODE_ARGS_SECTOR,
 				       CONFIG_SYS_MMCSD_RAW_MODE_ARGS_SECTORS,
@@ -75,7 +79,9 @@ void spl_mmc_load_image(void)
 	int err;
 	u32 boot_mode;
 
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng spl_mmc_load_image() /common/spl/spl_mmc.c\n");
+	#endif
 	mmc_initialize(gd->bd);
 	/* We register only one device. So, the dev id is always 0 */
 	mmc = find_mmc_device(0);
@@ -95,7 +101,9 @@ void spl_mmc_load_image(void)
 	}
 
 	boot_mode = spl_boot_mode();
+	#ifdef IYSHENG_DEBUG
 	printf("iysheng boot_mode = %d\n",boot_mode);
+	#endif
 	if (boot_mode == MMCSD_MODE_RAW) {
 		debug("boot mode - RAW\n");
 #ifdef CONFIG_SPL_OS_BOOT

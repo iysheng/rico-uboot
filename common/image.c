@@ -1137,7 +1137,9 @@ int image_setup_linux(bootm_headers_t *images)
 	struct lmb *lmb = &images->lmb;
 	ulong rd_len;
 	int ret;
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng get in image_setup_linux /common/image.c\n");
+	#endif
 	if (IMAGE_ENABLE_OF_LIBFDT)
 		boot_fdt_add_mem_rsv_regions(lmb, *of_flat_tree);
 
@@ -1158,7 +1160,9 @@ int image_setup_linux(bootm_headers_t *images)
 	}
 
 	if (IMAGE_ENABLE_OF_LIBFDT) {
+	#ifdef IYSHENG_DEBUG
 		puts("iysheng image_setup_linux /common/cmd_bootm.c\n");
+	#endif
 		ret = boot_relocate_fdt(lmb, of_flat_tree, &of_size);
 		if (ret)
 			return ret;

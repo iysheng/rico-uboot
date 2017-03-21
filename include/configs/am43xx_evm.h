@@ -11,6 +11,8 @@
 
 #define CONFIG_AM43XX
 
+/*#define IYSHENG_DEBUG*/
+
 /*add led support*/
 #define CONFIG_STATUS_LED
 #define CONFIG_BOARD_SPECIFIC_LED

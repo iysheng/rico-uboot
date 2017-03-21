@@ -64,8 +64,9 @@ __weak void spl_board_prepare_for_linux(void)
 void spl_parse_image_header(const struct image_header *header)
 {
 	u32 header_size = sizeof(struct image_header);
-
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng spl_parse_image_header() /common/spl/spl.c\n");
+	#endif
 	if (image_get_magic(header) == IH_MAGIC) {
 		if (spl_image.flags & SPL_COPY_PAYLOAD_ONLY) {
 			/*
@@ -108,7 +109,9 @@ __weak void __noreturn jump_to_image_no_args(struct spl_image_info *spl_image)
 
 	image_entry_noargs_t image_entry =
 			(image_entry_noargs_t) spl_image->entry_point;
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng jump_to_image_no_args() /common/spl/spl.c\n");
+	#endif
 	debug("image entry point: 0x%X\n", spl_image->entry_point);
 	image_entry();
 }
@@ -134,7 +137,9 @@ void board_init_r(gd_t *dummy1, ulong dummy2)
 {
 	u32 boot_device;
 	debug(">>spl:board_init_r()\n");
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng board_init_r common/spl/spl.c\n");
+	#endif
 #ifdef CONFIG_SYS_SPL_MALLOC_START
 	mem_malloc_init(CONFIG_SYS_SPL_MALLOC_START,
 			CONFIG_SYS_SPL_MALLOC_SIZE);
@@ -223,7 +228,9 @@ void board_init_r(gd_t *dummy1, ulong dummy2)
 
 	switch (spl_image.os) {
 	case IH_OS_U_BOOT:
+	#ifdef IYSHENG_DEBUG
 		puts("iysheng board_init_r IH_OS_U_BOOT /common/spl/spl.c\n");
+	#endif
 		debug("Jumping to U-Boot\n");
 		break;
 #ifdef CONFIG_SPL_OS_BOOT

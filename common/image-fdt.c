@@ -114,7 +114,9 @@ int boot_relocate_fdt(struct lmb *lmb, char **of_flat_tree, ulong *of_size)
 	ulong	of_len = 0;
 	int	err;
 	int	disable_relocation = 0;
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng get in boot_relocate_fdt /common/image-fdt.c\n");
+	#endif
 	/* nothing to do */
 	if (*of_size == 0)
 		return 0;
@@ -173,7 +175,9 @@ int boot_relocate_fdt(struct lmb *lmb, char **of_flat_tree, ulong *of_size)
 	} else {
 		debug("## device tree at %p ... %p (len=%ld [0x%lX])\n",
 		      fdt_blob, fdt_blob + *of_size - 1, of_len, of_len);
+	#ifdef IYSHENG_DEBUG
 		puts("iysheng boot_relocate_fdt /common/image-fdt.c\n");
+	#endif
 		printf("   Loading Device Tree to %p, end %p ... ",
 		       of_start, of_start + of_len - 1);
 

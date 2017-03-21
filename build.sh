@@ -3,14 +3,14 @@
 if [ $# -eq 0 ]
 then
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
-elif [[ $1 == c ]]
+elif [ $1 = c ]
 then
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am43xx_evm_config
-elif [[ $1 == b ]]
+elif [ $1 = b ]
 then
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
-elif [[ $1 == o ]]
+elif [ $1 = o ]
 then
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am43xx_evm_config

@@ -630,7 +630,9 @@ static int do_bootm_states(cmd_tbl_t *cmdtp, int flag, int argc,
 	 * Work through the states and see how far we get. We stop on
 	 * any error.
 	 */
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng get in do_bootm_states /common/cmd_bootm.c\n");
+	#endif
 	if (states & BOOTM_STATE_START)
 		ret = bootm_start(cmdtp, flag, argc, argv);
 
@@ -676,7 +678,9 @@ static int do_bootm_states(cmd_tbl_t *cmdtp, int flag, int argc,
 #endif
 #if defined(CONFIG_OF_LIBFDT) && defined(CONFIG_LMB)
 	if (!ret && (states & BOOTM_STATE_FDT)) {
+	#ifdef IYSHENG_DEBUG
 		puts("iysheng do_bootm_states /common/cmd_bootm.c\n");
+	#endif
 		boot_fdt_add_mem_rsv_regions(&images->lmb, images->ft_addr);
 		ret = boot_relocate_fdt(&images->lmb, &images->ft_addr,
 					&images->ft_len);

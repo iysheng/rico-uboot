@@ -230,11 +230,15 @@ void s_init(void)
 	gd->baudrate = CONFIG_BAUDRATE;
 	serial_init();
 	gd->have_console = 1;
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng say nor boot.\n");
+	#endif
 #elif defined(CONFIG_SPL_BUILD)
 	gd = &gdata;
 	preloader_console_init();
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng say spl build.\n");
+	#endif
 #endif
 	prcm_init();
 	set_mux_conf_regs();

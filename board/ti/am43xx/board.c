@@ -406,7 +406,9 @@ void sdram_init(void)
 int board_init(void)
 {
 	gd->bd->bi_boot_params = CONFIG_SYS_SDRAM_BASE + 0x100;
+	#ifdef IYSHENG_DEBUG
 	printf("iysheng board_init board/ti/am43xx/board.c gd->bd->bi_boot_params=0x%x\n",gd->bd->bi_boot_params);
+	#endif
 	return 0;
 }
 

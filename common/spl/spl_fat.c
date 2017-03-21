@@ -44,7 +44,9 @@ int spl_load_image_fat(block_dev_desc_t *block_dev,
 {
 	int err;
 	struct image_header *header;
+	#ifdef IYSHENG_DEBUG
 	puts("iysheng spl_load-image_fat /common/spl/spl-fat.c\n");
+	#endif
 	err = spl_register_fat_device(block_dev, partition);
 	if (err)
 		goto end;

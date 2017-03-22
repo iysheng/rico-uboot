@@ -394,7 +394,7 @@ void sdram_init(void)
 	//if (board_is_eposevm()) {
 	//	config_ddr(0, &ioregs_lpddr2, NULL, NULL, &emif_regs_lpddr2, 0);
 	//} else if (board_is_gpevm()) {
-		enable_vtt_regulator();
+		enable_vtt_regulator(); //iysheng myir is same with the gpio
 		config_ddr(0, &ioregs_ddr3, NULL, NULL,
 			   &ddr3_emif_regs_400Mhz, 0);
 //		config_ddr(0, &ioregs_ddr3, NULL, NULL,

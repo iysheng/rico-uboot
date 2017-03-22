@@ -652,7 +652,8 @@ int genimg_get_comp_id(const char *name)
  */
 int genimg_get_format(const void *img_addr)
 {
-	ulong format = IMAGE_FORMAT_INVALID;
+	/*ulong format = IMAGE_FORMAT_INVALID;*/
+	int format = IMAGE_FORMAT_INVALID;
 	const image_header_t *hdr;
 
 	hdr = (const image_header_t *)img_addr;
@@ -660,8 +661,8 @@ int genimg_get_format(const void *img_addr)
 		format = IMAGE_FORMAT_LEGACY;
 #if defined(CONFIG_FIT) || defined(CONFIG_OF_LIBFDT)
 	else {
-		if (fdt_check_header(img_addr) == 0)
-			format = IMAGE_FORMAT_FIT;
+		/*iysheng add*/
+		format = IMAGE_FORMAT_FIT;
 	}
 #endif
 
@@ -888,6 +889,7 @@ int boot_get_ramdisk(int argc, char * const argv[], bootm_headers_t *images,
 			break;
 #if defined(CONFIG_FIT)
 		case IMAGE_FORMAT_FIT:
+			puts("iysheng IMAGE_FROMAT_FIT common/image.c\n");
 			rd_noffset = fit_image_load(images, FIT_RAMDISK_PROP,
 					rd_addr, &fit_uname_ramdisk,
 					&fit_uname_config, arch,
@@ -913,6 +915,11 @@ int boot_get_ramdisk(int argc, char * const argv[], bootm_headers_t *images,
 			} else
 #endif
 			{
+#if defined(CONFIG_FIT)
+			puts("iysheng default common/image.c\n");
+			printf("iysheng %d test cross\n",genimg_get_format(buf));
+#endif
+			printf("iysheng %d test cross\n",genimg_get_format(buf));
 				puts("Wrong Ramdisk Image Format\n");
 				rd_data = rd_len = rd_load = 0;
 				return 1;

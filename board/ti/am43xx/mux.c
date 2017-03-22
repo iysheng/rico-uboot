@@ -11,6 +11,7 @@
 #include <asm/arch/mux.h>
 #include "board.h"
 
+/*iysheng ethernet rmii*/
 static struct module_pin_mux rmii1_pin_mux[] = {
 	{OFFSET(mii1_txen), MODE(1)},			/* RMII1_TXEN */
 	{OFFSET(mii1_txd1), MODE(1)},			/* RMII1_TD1 */
@@ -24,6 +25,7 @@ static struct module_pin_mux rmii1_pin_mux[] = {
 	{-1},
 };
 
+/*iysheng ethernet rgmii*/
 static struct module_pin_mux rgmii1_pin_mux[] = {
 	{OFFSET(mii1_txen), MODE(2)},			/* RGMII1_TCTL */
 	{OFFSET(mii1_rxdv), MODE(2) | RXACTIVE},	/* RGMII1_RCTL */
@@ -67,7 +69,7 @@ static struct module_pin_mux i2c0_pin_mux[] = {
 	{OFFSET(i2c0_scl), (MODE(0) | PULLUP_EN | RXACTIVE | SLEWCTRL)},
 	{-1},
 };
-
+/*iysheng sdram  pei zhi dianyuan de yige yinjiao*/
 static struct module_pin_mux gpio5_7_pin_mux[] = {
 	{OFFSET(spi0_cs0), (MODE(7) | PULLUP_EN)},	/* GPIO5_7 */
 	{-1},
@@ -93,7 +95,6 @@ void enable_board_pin_mux(void)
 	configure_module_pin_mux(mmc0_pin_mux);
 	configure_module_pin_mux(i2c0_pin_mux);
 	configure_module_pin_mux(mdio_pin_mux);
-	puts("config gpio mux\n");
 	//if (board_is_gpevm()) {
 		configure_module_pin_mux(gpio5_7_pin_mux);
 		configure_module_pin_mux(rgmii1_pin_mux);

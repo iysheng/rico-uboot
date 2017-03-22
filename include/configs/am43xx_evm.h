@@ -19,7 +19,8 @@
 
 #define CONFIG_IPADDR 192.168.1.200
 #define CONFIG_SERVERIP 192.168.1.101
-#define CONFIG_BOOTARGS "root=/dev/nfs nfsroot=192.168.1.101:/srv/nfs/rootfs ip=192.168.1.200 console=ttyO0,115200"
+/*#define CONFIG_BOOTARGS "root=/dev/nfs nfsroot=192.168.1.101:/srv/nfs/rootfs rw init=/linuxrc ip=192.168.1.200:192.168.1.101:192.168.1.1:255.255.255.0:::off console=ttyO0,115200"*/
+#define CONFIG_BOOTARGS "root=179:26 rw init=/linuxrc console=ttyO0,115200"
 
 #define CONFIG_BOARD_LATE_INIT
 #define CONFIG_ARCH_CPU_INIT
@@ -210,10 +211,8 @@
 			"setenv fdtfile myir_ricoboard.dtb; fi; " \
 /*"echo WARNING: Could not determine device tree; fi; \0"*/
 
-#define CONFIG_BOOTCOMMAND \
-	"tftp 80000000 uImage; " \
-	"tftp 90000000 myir_ricoboard.dtb;" \
-	"bootm 80000000 90000000;"
+/*#define CONFIG_BOOTCOMMAND "tftp 80000000 uImage\;tftp 90000000 myir_ricoboard.dtb\;bootm 80000000 - 90000000;"*/
+#define CONFIG_BOOTCOMMAND "fatload mmc 0:1 80000000 uImage\;fatload mmc 0:1 90000000 myir_ricoboard.dtb\;bootm 80000000 - 90000000;"
 #endif
 
 /* CPSW Ethernet */
